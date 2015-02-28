@@ -1,0 +1,8 @@
+bundle install
+rake db:create
+rake db:migrate
+
+
+active_admin
+User: admin@example.com
+Password: password
