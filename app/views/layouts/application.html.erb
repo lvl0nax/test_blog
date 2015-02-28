@@ -9,16 +9,28 @@
 <body>
   <div class="wrapper">
     <header>
-      <%= link_to '/', class: 'logo' do %>
-        <div class="logo_content">MY_BLOG</div>
-      <% end %>
-
+      <div class="header_content">
+        <%= link_to '/', class: 'logo' do %>
+          <div class="logo_content">{MY_BLOG}</div>
+        <% end %>
+        <nav>
+          <%= link_to 'Articles','/' %>
+          <%= link_to 'About','/' %>
+          <%= link_to 'javascript:void(0)', class: 'js_show_subscribe_form' do %>
+            <i class="icon-forward"></i> <span class="i-name">Subscribe</span>
+          <% end %>
+        </nav>
+      </div>
     </header>
     <main>
       <%= yield %>
     </main>
     <footer>
-      I'm a 30px tall footer
+      <div class="footer_content">
+        &copy;
+        <%= Time.zone.now.year %>
+        Home Production
+      </div>
     </footer>
   </div>
 </body>

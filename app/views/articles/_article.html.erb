@@ -1,0 +1,19 @@
+<div class="article_item">
+  <h2>
+    <%= link_to article.title, article %>
+  </h2>
+  <div class="article_info">
+    <div class="article_info__created_at">
+      <%= article.created_at.strftime('%d %m %Y') %>
+    </div>
+    <div class="article_info__comments_count">
+      <%= pluralize(article.comments_count, 'comment' )%>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="article_body">
+
+  </div>
+
+</div>

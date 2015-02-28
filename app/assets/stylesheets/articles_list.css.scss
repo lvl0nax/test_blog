@@ -1,0 +1,34 @@
+@import '_variables';
+/*------------list--------------*/
+.left_column{
+  float: left;
+  width: 67%;
+}
+.right_column{
+  float: right;
+  width: 30%;
+}
+h2{
+  padding-bottom: 10px;
+  border-bottom: 1px dotted $grey;
+  a{
+    color: $dark;
+    text-decoration: none;
+    &:hover{
+      color: $grey;
+    }
+  }
+}
+/*------------end list--------------*/
+/*------------article item----------*/
+.article_item{
+}
+.article_info__created_at{
+  float: left;
+  color: $grey;
+}
+.article_info__comments_count{
+  float: right;
+  color: $grey;
+}
+/*------------end article item----------*/

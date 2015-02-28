@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id    :integer          not null, primary key
+#  email :string
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

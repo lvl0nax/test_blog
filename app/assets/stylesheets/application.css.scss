@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,6 +11,85 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require 'base'
+ *= require 'fontello'
+ *= require 'articles_list'
  *= require_self
  */
+
+@import '_variables';
+/*----------------layout------------------*/
+.wrapper {
+  height:100vh;
+  display:flex;
+  // Direction of the items, can be row or column
+  flex-direction: column;
+}
+
+.footer_content, .header_content, main{
+  max-width: $max_width;
+  min-width: $min_width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+main {
+  flex:1;
+  width: calc(100% - 40px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/*----------------end layout------------------*/
+
+/*------------header-------------------*/
+header{
+  background: $dark;
+  height: 45px;
+  a{
+    line-height: 45px;
+    color: $white_link;
+    text-decoration: none;
+    &:hover{
+      color: $h_white_link;
+    }
+  }
+}
+.logo{
+  display: block;
+  float: left;
+  font-size: 20px;
+  font-weight: bold;
+}
+nav{
+  float: right;
+  font-size: 17px;
+  a:nth-child(n){
+    margin-right: 50px;
+  }
+  a:last-child{
+    margin-right: 0;
+    text-decoration: none;
+  }
+}
+/*------------end header-------------------*/
+
+
+/*------------footer-------------------*/
+footer{
+  border-top: 1px solid $grey;
+  height: 40px;
+}
+.footer_content{
+  text-align: center;
+  font-size: 12px;
+  color: $dark;
+  line-height: 40px;
+}
+/*------------end footer-------------------*/
+
+/*------------commentable articles ----------*/
+.commentable_articles{
+  a{
+    display: block;
+  }
+}
+/*------------end commentable articles ----------*/

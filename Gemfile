@@ -17,7 +17,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'ckeditor'
-gem 'will_paginate'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'kaminari'
+
+# for annotation models
+gem 'annotate', github: 'ctran/annotate_models'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
