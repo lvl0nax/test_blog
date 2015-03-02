@@ -2,6 +2,7 @@
   <%= render @articles %>
 </div>
 <div class="right_column">
-  <%= render 'articles/most_commentable_articles' %>
+  <%= render 'articles/most_commented_articles' %>
 </div>
 <div class="clearfix"></div>
+<%= paginate @articles %>

@@ -1,0 +1,15 @@
+<div class="commented_header">The most commented articles:</div>
+<div class="commented_articles">
+  <%- @commented_articles.each do |article| %>
+    <%= link_to article do %>
+      <div class="commented_article__title">
+        <%= article.title%>
+      </div>
+      <div class="commented_article__comments_count">
+        <i class="icon-comment"></i>
+        <%= article.comments_count%>
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
+  <% end %>
+</div>

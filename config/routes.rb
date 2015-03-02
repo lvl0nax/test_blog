@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :articles, only: [:show, :index]
+  resources :articles, only: [:show, :index] do
+    resources :comments, only: :create
+  end
+
+  resources :subscriptions, only: :create
+
+  get 'about' => 'articles#about'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

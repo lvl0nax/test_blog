@@ -8,7 +8,9 @@
   float: right;
   width: 30%;
 }
-h2{
+/*------------end list--------------*/
+/*------------article item----------*/
+h1{
   padding-bottom: 10px;
   border-bottom: 1px dotted $grey;
   a{
@@ -19,9 +21,8 @@ h2{
     }
   }
 }
-/*------------end list--------------*/
-/*------------article item----------*/
 .article_item{
+  margin-bottom: 50px;
 }
 .article_info__created_at{
   float: left;
@@ -31,4 +32,36 @@ h2{
   float: right;
   color: $grey;
 }
+.article_body{
+  margin-top:20px;
+}
 /*------------end article item----------*/
+
+/*------------commented articles----------*/
+.commented_header{
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.commented_articles{
+  a{
+    color: $grey;
+    display: block;
+    line-height: 25px;
+    padding: 10px;
+    &:hover{
+      color: $dark;
+      background-color: $light_grey;
+    }
+  }
+}
+.commented_article__title{
+  float: left;
+  font-size: 16px;
+  text-decoration: none;
+}
+.commented_article__comments_count{
+  float: right;
+  font-size: 18px;
+}
+/*------------end commented articles----------*/

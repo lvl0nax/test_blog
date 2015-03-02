@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 
+gem 'sidekiq'
 # for annotation models
 gem 'annotate', github: 'ctran/annotate_models'
 
@@ -49,5 +50,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'letter_opener'
 end
 

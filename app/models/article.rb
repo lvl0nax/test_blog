@@ -14,10 +14,15 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   validates :title, :body, presence: true
 
-  scope :most_commentable, -> do
+  scope :most_commented, -> do
     order(comments_count: :desc)
     .select(:title, :id, :comments_count)
     .limit(10)
   end
 
+  paginates_per 10
+
+  def to_param
+    "#{id}_#{title}"
+  end
 end

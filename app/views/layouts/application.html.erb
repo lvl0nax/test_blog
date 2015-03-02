@@ -15,7 +15,7 @@
         <% end %>
         <nav>
           <%= link_to 'Articles','/' %>
-          <%= link_to 'About','/' %>
+          <%= link_to 'About', about_path %>
           <%= link_to 'javascript:void(0)', class: 'js_show_subscribe_form' do %>
             <i class="icon-forward"></i> <span class="i-name">Subscribe</span>
           <% end %>
@@ -33,5 +33,18 @@
       </div>
     </footer>
   </div>
+
+  <div id="dialog-form" title="Create new subscription">
+    <p class="validateTips">Please, set your e-mail</p>
+
+    <form>
+      <fieldset>
+        <label for="email">E-mail</label>
+        <input type="text" name="email" id="email" class="text ui-widget-content ui-corner-all">
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+      </fieldset>
+    </form>
+  </div>
+
 </body>
 </html>

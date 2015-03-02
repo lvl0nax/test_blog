@@ -1,0 +1,34 @@
+<div class="article_show">
+  <div class="article_created_at">
+    <%= @article.created_at.strftime('%d %B %Y') %>
+  </div>
+  <h1>
+    <%= @article.title %>
+  </h1>
+  <div class="article_content">
+    <%= @article.body.html_safe %>
+  </div>
+</div>
+<div class="comments_block">
+  <div class="comments__count">
+    <span class="js_number">
+      <%= @article.comments_count%>
+    </span>
+    <%= 'comment'.pluralize(@article.comments_count)%>
+  </div>
+  <div class="comments__list">
+    <%= render @article.comments %>
+  </div>
+
+  <div class="comments__form">
+    <%= form_for([@article, Comment.new]) do |f| %>
+        <p>
+          <%= f.text_field :author_name, placeholder: 'Your name' %>
+        </p>
+        <p>
+          <%= f.text_area :body, placeholder: 'New comment' %>
+        </p>
+        <p><%= f.submit 'Add Comment'%></p>
+    <% end %>
+  </div>
+</div>
