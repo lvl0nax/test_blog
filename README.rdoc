@@ -1,8 +1,14 @@
-bundle install
-rake db:create
-rake db:migrate
+  install:
+    * redis for sidekiq
+    * postgres
+    * imagemagick
+  
+  terminal commands:
+  bundle install
+  rake db:create
+  rake db:migrate
+  rails s
 
-
-active_admin
-User: admin@example.com
-Password: password
+  active_admin(http://localhost:3000/admin) - admin panel for creation articles
+  (User: admin@example.com)
+  (Password: password)
