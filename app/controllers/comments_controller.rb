@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
   def create
     article = Article.find(params[:article_id])
-    if article.comments.create(permitted_params)
+    comment = article.comments.new(permitted_params)
+    if comment.valid? && comment.save
       redirect_to article
     else
-      render json: {error: 'big error'}
+      render json: {errors: comment.errors.full_messages}
     end
   end
 

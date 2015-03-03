@@ -7,11 +7,13 @@ $ ->
   email = $('#email')
   tips = $('.validateTips')
 
-  updateTips = (t) ->
-    tips.text(t).addClass 'ui-state-highlight'
-    setTimeout (->
-      tips.removeClass 'ui-state-highlight', 1500
-    ), 500
+  updateTips = (t, flag = false) ->
+    tips.text(t)
+    if flag
+      tips.addClass 'ui-state-highlight'
+      setTimeout (->
+        tips.removeClass 'ui-state-highlight', 1500
+      ), 2500
 
   checkRegexp = (field) ->
     if !emailRegex.test(field.val())
@@ -22,18 +24,20 @@ $ ->
       true
 
   addUser = ->
+    email.removeClass('ui-state-error')
     valid = checkRegexp(email)
     email.removeClass 'ui-state-error'
     if valid
-      $.post(
-        'example.php'
-        data:
-          email: email
-      ).done(->
-        dialog.dialog 'close'
-      ).fail ->
-        alert 'error'
-
+      $.ajax(
+        type: "POST"
+        url: '/subscriptions'
+        data: {email: email.val()}
+      ).done (msg) ->
+        if msg['status'] == 'ok'
+          dialog.dialog 'close'
+        else
+          email.addClass('ui-state-error')
+          updateTips msg['error'], 'error'
     valid
 
   dialog = $('#dialog-form').dialog(
@@ -42,10 +46,6 @@ $ ->
     height: 130
     width: 250
     modal: true
-    buttons:
-      'Subscribe': addUser
-      Cancel: ->
-        dialog.dialog 'close'
     close: ->
       form[0].reset()
       updateTips 'Please, set your e-mail.'
@@ -55,7 +55,19 @@ $ ->
     event.preventDefault()
     addUser()
   )
+
   $('.js_show_subscribe_form').on 'click', (event) ->
     event.preventDefault()
     email.val('')
     dialog.dialog 'open'
+
+  $('.js_close_dialog').on 'click', (event) ->
+    event.preventDefault()
+    form[0].reset()
+    updateTips 'Please, set your e-mail.'
+    email.removeClass 'ui-state-error'
+    dialog.dialog 'close'
+
+  $('.js_add_subscriber').on 'click', (event) ->
+    event.preventDefault()
+    addUser()

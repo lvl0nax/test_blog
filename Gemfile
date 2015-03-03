@@ -22,6 +22,8 @@ gem 'carrierwave'
 gem 'kaminari'
 
 gem 'sidekiq'
+gem 'slim'
+gem 'sinatra', require: false
 # for annotation models
 gem 'annotate', github: 'ctran/annotate_models'
 
@@ -52,5 +54,14 @@ group :development, :test do
   gem 'spring'
 
   gem 'letter_opener'
+
+  gem 'faker'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'machinist'
 end
 
+group :test do
+  gem 'webmock'
+end

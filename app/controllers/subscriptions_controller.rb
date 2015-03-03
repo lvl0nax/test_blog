@@ -1,10 +1,17 @@
 class SubscriptionsController < ApplicationController
   def create
-    if Subscription.create(permitted_params)
-      redirect_to root_url
+    s = Subscription.new(permitted_params)
+    if s.valid? && s.save
+      render json: {status: :ok}
     else
-      render json: {error: 'big error'}
+      render json: {status: 500, error: s.errors.full_messages.first}
     end
+  end
+
+  # destroy subscription by token from url
+  def unsubscribe
+    email = Base64.decode64(params[:token])
+    Subscription.where(email: email).destroy_all
   end
 
   private

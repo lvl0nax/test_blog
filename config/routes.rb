@@ -1,4 +1,6 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   resources :articles, only: [:show, :index] do
     resources :comments, only: :create
   end
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   resources :subscriptions, only: :create
 
   get 'about' => 'articles#about'
+  get 'unsubscribe/:token' => 'subscription#unsubscribe', as: 'unsubscribe'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

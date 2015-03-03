@@ -7,6 +7,7 @@
 #
 
 class Subscription < ActiveRecord::Base
+  # validates with custom email validator and rails validation for presence and uniqueness email
   validates :email,
             presence: true,
             email: true,

@@ -101,6 +101,7 @@ footer{
   border-radius: 5px;
   background: white;
   z-index: 2;
+  min-height: 140px;
   label, input {
     display:block;
   }
@@ -114,8 +115,11 @@ footer{
     border:0;
     margin-top:25px;
   }
-  .ui-dialog .ui-state-error{
-    padding: .3em;
+  .ui-state-error{
+    border: 1px solid red;
+  }
+  .ui-state-highlight{
+    color: red;
   }
   .validateTips{
     border: 1px solid transparent;
@@ -139,12 +143,36 @@ footer{
   .ui-dialog-buttonpane{
     padding: 0 5px;
     height: 25px;
-    button:first-child{
-      float: left;
-    }
-    button:last-child{
-      float: right;
+  }
+  .subscribe_button{
+    display: block;
+    float: left;
+  }
+  .cancel_button{
+    display: block;
+    float: right;
+  }
+  .subscribe_button, .cancel_button{
+    display: block;
+    color: $h_white_link;
+    background-color: $dark;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    &:hover{
+      color: white;
     }
   }
 }
 /*------------- end dialog --------------------*/
+/*-----------------pagination ----------------*/
+.pagination{
+  a{
+    color: $dark;
+  }
+  .current{
+    font-weight: bold;
+  }
+}
+/*-----------------end pagination ----------------*/
