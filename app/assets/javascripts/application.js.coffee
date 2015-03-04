@@ -88,6 +88,7 @@ $(document).on 'click', '.js_add_comment', (event) ->
   err.hide()
   article_id = $('.js_add_comment').data('article-id')
   body = $('#comment_body').val()
+  comments_count = $('.js_comments_number')
   author_name = $('#comment_author_name').val()
   $.ajax(
     type: "POST"
@@ -99,6 +100,7 @@ $(document).on 'click', '.js_add_comment', (event) ->
     if msg['status'] == 'ok'
       $('.comments__form form')[0].reset()
       $('.comments__list').append comment_html(author_name, body)
+      comments_count.html(parseInt(comments_count.html()) + 1)
     else
       err.html(msg['errors'].join('</br>'))
       err.show()
