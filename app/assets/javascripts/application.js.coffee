@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require_tree .
 
+## ======================= subscription dialog ================================##
 $ ->
   emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   email = $('#email')
@@ -63,11 +64,43 @@ $ ->
 
   $('.js_close_dialog').on 'click', (event) ->
     event.preventDefault()
-    form[0].reset()
-    updateTips 'Please, set your e-mail.'
-    email.removeClass 'ui-state-error'
     dialog.dialog 'close'
 
   $('.js_add_subscriber').on 'click', (event) ->
     event.preventDefault()
     addUser()
+## ======================= end subscription dialog ================================##
+
+## ======================= comment form ================================##
+comment_html = (name, body)->
+  date = new Date
+  '<div class="comment"> <div class="comment__header"> <div class="comment__author">' +
+  name +
+  '</div>  <div class="comment__created_at"> Published at: ' +
+  "#{$.datepicker.formatDate('dd.mm.yy', new Date())}" +
+  '</div> </div> <div class="comment__body">' +
+  body +
+  '</div></div>'
+
+$(document).on 'click', '.js_add_comment', (event) ->
+  event.preventDefault()
+  err = $('.comment__form__error')
+  err.hide()
+  article_id = $('.js_add_comment').data('article-id')
+  body = $('#comment_body').val()
+  author_name = $('#comment_author_name').val()
+  $.ajax(
+    type: "POST"
+    url: "/articles/#{article_id}/comments"
+    data:
+      body: body
+      author_name: author_name
+  ).done (msg) ->
+    if msg['status'] == 'ok'
+      $('.comments__form form')[0].reset()
+      $('.comments__list').append comment_html(author_name, body)
+    else
+      err.html(msg['errors'].join('</br>'))
+      err.show()
+## ======================= end comment form ================================##
+

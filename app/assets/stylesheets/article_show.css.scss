@@ -22,7 +22,7 @@
 
 /*--------------------comments part -------------------*/
 .comment{
-  margin: 20px 0;
+  margin: 0 0 30px;
   .comment__header{
     display: inline-block;
     padding-bottom: 5px;
@@ -44,6 +44,14 @@
 .comments_block{
   width: 90%;
   margin: 20px auto;
+  .comment__form__error{
+    display: none;
+    color: red;
+  }
+  .comments__count{
+    border-bottom: 1px dotted $light_grey;
+    margin-bottom: 15px;
+  }
   label{
     width: 90px;
     text-align: right;
@@ -70,6 +78,18 @@
       padding: 5px;
       height: 104px;
       width: 320px;
+    }
+  }
+  .comment__form__submit_link{
+    display: inline-block;
+    color: $h_white_link;
+    background-color: $dark;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    &:hover{
+      color: white;
     }
   }
 }

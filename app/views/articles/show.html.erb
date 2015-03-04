@@ -21,14 +21,20 @@
   </div>
 
   <div class="comments__form">
+    <div class="comment__form__error"></div>
     <%= form_for([@article, Comment.new]) do |f| %>
-        <p>
-          <%= f.text_field :author_name, placeholder: 'Your name' %>
-        </p>
-        <p>
-          <%= f.text_area :body, placeholder: 'New comment' %>
-        </p>
-        <p><%= f.submit 'Add Comment'%></p>
+      <p>
+        <%= f.text_field :author_name, placeholder: 'Your name' %>
+      </p>
+      <p>
+        <%= f.text_area :body, placeholder: 'New comment' %>
+      </p>
+      <div class="submit_link">
+        <a href="#" class="js_add_comment comment__form__submit_link" data-article-id= <%=@article.id %> >
+          Add comment
+        </a>
+      </div>
     <% end %>
+
   </div>
 </div>

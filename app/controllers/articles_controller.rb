@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :fetch_commented_articles, only: :index
 
   def index
-    @articles = Article.order(created_at: :desc).page params[:page]
+    @articles = Article.order(created_at: :desc).page page_param
   end
 
   def show
@@ -19,6 +19,6 @@ class ArticlesController < ApplicationController
     @commented_articles = Article.most_commented
   end
   def page_param
-    params[:page] || 1
+    params[:page] ? params[:page].to_i : 1
   end
 end
