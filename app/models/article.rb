@@ -16,6 +16,9 @@ class Article < ActiveRecord::Base
   #validation for presence attributes
   validates :title, :body, presence: true
 
+  # send notification emails after creating article
+  after_commit :notify_about_article, on: :create
+
   # scope: Looking for the most commented articles
   scope :most_commented, -> do
     order(comments_count: :desc)
@@ -30,5 +33,11 @@ class Article < ActiveRecord::Base
   # method for friendly url
   def to_param
     "#{id}_#{title}"
+  end
+
+  private
+
+  def notify_about_article
+    DeliveryService.start(self.id)
   end
 end

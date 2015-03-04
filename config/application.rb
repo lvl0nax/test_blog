@@ -26,5 +26,6 @@ module Blog
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.active_job.queue_adapter = :sidekiq
   end
 end

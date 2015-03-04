@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :subscriptions, only: :create
 
   get 'about' => 'articles#about'
-  get 'unsubscribe/:token' => 'subscription#unsubscribe', as: 'unsubscribe'
+  get 'unsubscribe/:token' => 'subscriptions#unsubscribe', as: 'unsubscribe'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

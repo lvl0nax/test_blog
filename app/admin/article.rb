@@ -28,11 +28,4 @@ ActiveAdmin.register Article do
     actions
   end
 
-  controller do
-    def create
-      super
-      EmailWorker.perform_async(Article.select(:id).last.id)
-    end
-  end
-
 end
