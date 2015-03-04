@@ -1,6 +1,7 @@
 ActiveAdmin.register Article do
   permit_params :title, :body
 
+  # custom form for creation article
   form do |f|
     f.semantic_errors
     inputs 'Title' do

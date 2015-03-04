@@ -13,13 +13,13 @@
 class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
-  #validation for presence attributes
+  #validation of presence of attributes
   validates :title, :body, presence: true
 
-  # send notification emails after creating article
+  # sending notification emails after creation of article
   after_commit :notify_about_article, on: :create
 
-  # scope: Looking for the most commented articles
+  # scope: to search for the most commented articles
   scope :most_commented, -> do
     order(comments_count: :desc)
     .where('comments_count > 0')

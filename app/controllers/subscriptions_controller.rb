@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # destroy subscription by token from url
+  # destroy subscription by token
   def unsubscribe
     email = Base64.decode64(params[:token])
     Subscription.where(email: email).destroy_all
